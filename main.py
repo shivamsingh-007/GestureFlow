@@ -81,25 +81,25 @@ class SliderApp:
     def _build_tray_menu(self):
         return pystray.Menu(
             pystray.MenuItem(
-                lambda: f"Status: {self._status}",
-                lambda: None,
+                lambda item: f"Status: {self._status}",
+                lambda icon, item: None,
                 enabled=False,
             ),
             pystray.MenuItem(
-                lambda: f"Last action: {self._last_action}",
-                lambda: None,
+                lambda item: f"Last action: {self._last_action}",
+                lambda icon, item: None,
                 enabled=False,
             ),
             pystray.Menu.SEPARATOR,
             pystray.MenuItem(
                 "Start",
                 lambda icon, item: self._start_engine(),
-                visible=lambda: self._status == "Stopped",
+                visible=lambda item: self._status == "Stopped",
             ),
             pystray.MenuItem(
                 "Stop",
                 lambda icon, item: self._stop_engine(),
-                visible=lambda: self._status == "Running",
+                visible=lambda item: self._status == "Running",
             ),
             pystray.Menu.SEPARATOR,
             pystray.MenuItem("Settings", lambda icon, item: self._open_settings()),
