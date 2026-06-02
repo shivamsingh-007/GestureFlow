@@ -114,8 +114,8 @@ class GestureEngine:
 
             gesture = Gesture.NONE
 
-            if result.landmarks:
-                hand_lm = result.landmarks[0]
+            if result.hand_landmarks:
+                hand_lm = result.hand_landmarks[0]
                 landmarks = [Landmark(x=lm.x, y=lm.y, z=lm.z) for lm in hand_lm]
                 gesture = self.detector.detect(landmarks)
 
